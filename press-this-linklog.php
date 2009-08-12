@@ -343,7 +343,7 @@ die;
 	wp_enqueue_style('press-this-ie');
 	wp_enqueue_style( 'colors' );
 	wp_enqueue_script( 'post' );
-	wp_enqueue_script('editor');
+	//wp_enqueue_script('editor');
 ?>
 <script type="text/javascript">
 //<![CDATA[
