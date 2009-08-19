@@ -1,0 +1,19 @@
+h1. Press This Linklog
+
+h2. What it's for
+
+This is a modified version of WordPress' _Press This_ bookmarklet meant to be used in conjunction with Jonathan Penn's "WordPress Linked List":wpll plugin.
+
+[wpll]http://github.com/jonathanpenn/wordpress-linked-list-plugin/tree/master
+
+This adds a text box to control the outgoing url of linklog items, using a custom field called "linked_list_url". Along with various UI improvements.
+
+
+h2. How to install it
+
+1. Download
+2. Upload <code>press-this-linklog.php</code> to your <code>wp-admin</code> folder
+3. Login to WordPress &rarr; Tools &rarr; install Press This
+4. Edit the location of Press This in your bookmark bar to link to <code>http://your-site.com/wp-admin/press-this-linklog.php</code>
+5. ????
+6. PROFIT!!!
