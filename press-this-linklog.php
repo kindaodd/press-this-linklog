@@ -77,10 +77,13 @@ function press_it() {
 	$quick['post_title'] = $_REQUEST['title'];
 	$url = $_REQUEST['URL'];
 	$quick['ID'] = $post_ID;
-		wp_update_post($quick);
-		if ($url && $url != "External URL (optional)") {
-			add_post_meta($post_ID, 'linked_list_url', $url, true);
-		}
+	
+	wp_update_post($quick);
+	
+	if ($url && $url != "External URL (optional)") {
+		update_post_meta($post_ID, 'linked_list_url', $url);
+	}
+	
 	
 	// error handling for $post
 	if ( is_wp_error($post_ID)) {
@@ -536,7 +539,7 @@ postTitle.style.fontStyle = 'italic'; postTitle.value = 'Post Title';};">
 
 	<div class="posting">
 		<?php if ( isset($posted) && intval($posted) ) { $post_ID = intval($posted); ?>
-		<div id="message" class="updated fade"><p><strong><?php _e('Your post has been saved.'); ?></strong> <a onclick="window.opener.location.replace(this.href); window.close();" href="<?php echo get_permalink($post_ID); ?>"><?php _e('View post'); ?></a> | <a href="<?php echo get_edit_post_link($post_ID); ?>" onclick="window.opener.location.replace(this.href); window.close();"><?php _e('Edit post'); ?></a> | <a href="#" onclick="window.close();"><?php _e('Close Window'); ?></a></p></div>
+		<div id="message" class="updated fade"><p><strong><?php _e('Your post has been saved.'); ?></strong> <a onclick="window.opener.location.replace(this.href); window.close();" href="<?php echo get_permalink( $post_ID); ?>"><?php _e('View post'); ?></a> | <a href="<?php echo get_edit_post_link( $post_ID ); ?>" onclick="window.opener.location.replace(this.href); window.close();"><?php _e('Edit post'); ?></a> | <a href="#" onclick="window.close();"><?php _e('Close Window'); ?></a></p></div>
 		<?php } ?>
 
 		<div id="titlediv">
