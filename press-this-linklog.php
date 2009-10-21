@@ -78,12 +78,11 @@ function press_it() {
 	$url = $_REQUEST['URL'];
 	$quick['ID'] = $post_ID;
 	
-	wp_update_post($quick);
+		wp_update_post($quick);
 	
-	if ($url && $url != "External URL (optional)") {
-		update_post_meta($post_ID, 'linked_list_url', $url);
-	}
-	
+		if ($url && $url != "External URL (optional)") {
+			add_post_meta($post_ID, 'linked_list_url', $url, false);
+		}
 	
 	// error handling for $post
 	if ( is_wp_error($post_ID)) {
@@ -464,7 +463,7 @@ var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
 URLbox.style.fontStyle = 'italic'; URLbox.value = 'External URL (optional)';}; if (postTitle.value == '') {postTitle.style.color = '#999';
 postTitle.style.fontStyle = 'italic'; postTitle.value = 'Post Title';};">
 <div id="wphead"></div>
-<form action="press-this.php?action=post" method="post">
+<form action="press-this-linklog.php?action=post" method="post">
 <div id="poststuff" class="metabox-holder">
 	<div id="side-info-column">
 		<div class="sleeve">
@@ -539,7 +538,7 @@ postTitle.style.fontStyle = 'italic'; postTitle.value = 'Post Title';};">
 
 	<div class="posting">
 		<?php if ( isset($posted) && intval($posted) ) { $post_ID = intval($posted); ?>
-		<div id="message" class="updated fade"><p><strong><?php _e('Your post has been saved.'); ?></strong> <a onclick="window.opener.location.replace(this.href); window.close();" href="<?php echo get_permalink( $post_ID); ?>"><?php _e('View post'); ?></a> | <a href="<?php echo get_edit_post_link( $post_ID ); ?>" onclick="window.opener.location.replace(this.href); window.close();"><?php _e('Edit post'); ?></a> | <a href="#" onclick="window.close();"><?php _e('Close Window'); ?></a></p></div>
+		<div id="message" class="updated fade"><p><strong><?php _e('Your post has been saved.'); ?></strong> <a onclick="window.opener.location.replace(this.href); window.close();" href="<?php echo get_permalink($post_ID); ?>"><?php _e('View post'); ?></a> | <a href="<?php echo get_edit_post_link($post_ID); ?>" onclick="window.opener.location.replace(this.href); window.close();"><?php _e('Edit post'); ?></a> | <a href="#" onclick="window.close();"><?php _e('Close Window'); ?></a></p></div>
 		<?php } ?>
 
 		<div id="titlediv">
